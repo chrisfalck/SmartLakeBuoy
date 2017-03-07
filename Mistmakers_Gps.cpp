@@ -25,10 +25,13 @@ void initializeGps(Adafruit_GPS* gps) {
 }
 
 char* getLocation(Adafruit_GPS* gps) {
+	initializeGps(gps);
+
 	gps->begin(9600);
+	delay(1000);
+
 	boolean shouldContinue = true;
 	while (shouldContinue) {
-		delay(3000);
 		if (gps->newNMEAreceived()) {
 			if (!gps->parse(gps->lastNMEA())) return;
 		}
@@ -76,6 +79,9 @@ char* getLocation(Adafruit_GPS* gps) {
 			tmpInt2 = trunc(tmpFrac * 10000);  
 			sprintf(tempStr, "long: %s%d.%04d", tmpSign, tmpInt1, tmpInt2);
 			strcat(location, tempStr);
+
+			Serial.println("Read from GPS:");
+			Serial.println(location);
 
 			return location;
 		}

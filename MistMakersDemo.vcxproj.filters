@@ -21,7 +21,10 @@
     <ClInclude Include="Mistmakers_Fona.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="nxjson.h">
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mistmakers_Gps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,11 +35,14 @@
     <ClCompile Include="Mistmakers_Fona.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="nxjson.c">
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mistmakers_Gps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MistMakersDemo.cpp" />
+    <None Include="MistMakersDemo.ino" />
   </ItemGroup>
 </Project>

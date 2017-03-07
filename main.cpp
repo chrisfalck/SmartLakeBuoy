@@ -45,7 +45,6 @@ int main() {
 
 	// Peripheral initializations. 
 	initializeFona(&fonaEntity);
-	initializeGps(&gps);
 
 	// Looping calls. 
 	while (1) {
