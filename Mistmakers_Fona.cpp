@@ -1,12 +1,19 @@
-#include "Mistmakers_fona.h"
+#include "Mistmakers_Fona.h"
+#include "Mistmakers_Gps.h"
 
 #define newline Serial.println()
 
-int sendMessageToNumber(Adafruit_FONA* fona, SMSMessage* messageInfo) {
+int sendMessageToNumber(FonaEntity* fonaEntity, SMSMessage* messageInfo, Adafruit_GPS* gps) {
+
+	char* location = getLocation(gps);
+
+	delay(5000);
+
+	initializeFona(fonaEntity);
 
 	// Attempt to send a text message.
-	if (!fona->sendSMS(*(messageInfo->number), *(messageInfo->message))) {
-		fona->sendSMS("13528577310", "Couldnt send message to intended recipient.");
+	if (!fonaEntity->fona->sendSMS(*(messageInfo->number), location)) {
+		fonaEntity->fona->sendSMS("13528577310", "Couldnt send message to intended recipient.");
 		return 0;
 	}
 	else {
@@ -26,12 +33,6 @@ void initializeFona(FonaEntity* fonaEntity) {
 	newline;
 	Serial.println("FONA Ready");
 	newline; 
-
-	// Free up any memory tied to old sms messages.
-	uint16_t smslen;
-	for (int i = 0; i < 32; ++i) {
-		fonaEntity->fona->deleteSMS(i);
-	}
 }
 
 void checkForMessage(SMSMessage* message, Adafruit_FONA* fona) {
@@ -42,7 +43,9 @@ void checkForMessage(SMSMessage* message, Adafruit_FONA* fona) {
 	// Fona buffer pointer. 
 	char* bufPtr = fonaInBuffer;
 
-	if (!(fona->available())) return;
+	if (!(fona->available())) {
+		return;
+	}
 
 	// This will be the slot number of the SMS.
 	int slot = 0;
@@ -103,5 +106,6 @@ void checkForMessage(SMSMessage* message, Adafruit_FONA* fona) {
 		for (int i = 0; i < 8; ++i) {
 			fona->deleteSMS(i);
 		}
+
 	}
 }

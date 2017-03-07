@@ -3,6 +3,7 @@
 
 #include <SoftwareSerial.h>
 #include "Adafruit_FONA.h"
+#include "Adafruit_GPS.h"
 
 // Declare typedefs so we dont' have to keep saying struct. 
 typedef struct FonaEntity FonaEntity;
@@ -21,7 +22,7 @@ struct FonaEntity {
 };
 
 // Send a message struct.
-int sendMessageToNumber(Adafruit_FONA* fona, SMSMessage* messageInfo);
+int sendMessageToNumber(FonaEntity* fonaEntity, SMSMessage* messageInfo, Adafruit_GPS* gps);
 
 // Initialize the fona. 
 void initializeFona(FonaEntity* fonaEntity);

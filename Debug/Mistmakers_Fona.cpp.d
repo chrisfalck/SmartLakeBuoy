@@ -1,6 +1,6 @@
 C:\Users\Chris\AppData\Local\Temp\VMBuilds\MistMakersDemo\uno\Debug\Mistmakers_Fona.cpp.o: \
  C:\Users\Chris\AppData\Local\Temp\VMBuilds\MistMakersDemo\uno\Debug\Mistmakers_Fona.cpp \
- C:\Users\Chris\AppData\Local\Temp\VMBuilds\MistMakersDemo\uno\Debug\Mistmakers_fona.h \
+ C:\Users\Chris\AppData\Local\Temp\VMBuilds\MistMakersDemo\uno\Debug\Mistmakers_Fona.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src/SoftwareSerial.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Print.h \
@@ -20,4 +20,6 @@ C:\Users\Chris\AppData\Local\Temp\VMBuilds\MistMakersDemo\uno\Debug\Mistmakers_F
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBAPI.h \
  C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
- C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\standard/pins_arduino.h
+ C:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\standard/pins_arduino.h \
+ C:\Users\Chris\Documents\Arduino\libraries\Adafruit_GPS-master/Adafruit_GPS.h \
+ C:\Users\Chris\AppData\Local\Temp\VMBuilds\MistMakersDemo\uno\Debug\Mistmakers_Gps.h
