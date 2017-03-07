@@ -15,7 +15,6 @@ int sendMessageToNumber(Adafruit_FONA* fona, SMSMessage* messageInfo) {
 }
 
 void initializeFona(FonaEntity* fonaEntity) {
-	static int initializationCounter = 0;
 
 	// Make it slow so its easy to read.
 	fonaEntity->fonaSS->begin(4800);
@@ -23,9 +22,6 @@ void initializeFona(FonaEntity* fonaEntity) {
 		Serial.println(F("Couldn't find FONA"));
 		while (1);
 	}
-
-	// Print SIM card IMEI number.
-	char imei[15] = { 0 };
 
 	newline;
 	Serial.println("FONA Ready");

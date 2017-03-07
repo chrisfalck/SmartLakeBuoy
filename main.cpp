@@ -14,15 +14,15 @@
 #define GPS_RX 7
 #define GPS_TX 8
 
-SoftwareSerial* gpsSS = new SoftwareSerial(GPS_TX, GPS_RX);
-Adafruit_GPS gps(gpsSS);
+SoftwareSerial gpsSS = SoftwareSerial(GPS_TX, GPS_RX);
+Adafruit_GPS gps(&gpsSS);
 
-SoftwareSerial* fonaSS = new SoftwareSerial(FONA_TX, FONA_RX);
-Adafruit_FONA* fona = new Adafruit_FONA(FONA_RST);
+SoftwareSerial fonaSS = SoftwareSerial(FONA_TX, FONA_RX);
+Adafruit_FONA fona = Adafruit_FONA(FONA_RST);
 
 FonaEntity fonaEntity = {
-	fonaSS,
-	fona
+	&fonaSS,
+	&fona
 };
 
 int main() {
@@ -42,6 +42,17 @@ int main() {
 		fonaLoop();
 		Serial.flush();
 	}
+}
+
+void gpsLoop() {
+	gps.begin(9600);
+	gps.sendCommand(PMTK_SET_NMEA_OUTPUT_RMCGGA);
+	gps.sendCommand(PMTK_SET_NMEA_UPDATE_1HZ);   // 1 Hz update rate
+	gps.sendCommand(PGCMD_ANTENNA);
+	Serial.print("Location (in degrees, works with Google Maps): ");
+	Serial.print(gps.latitudeDegrees, 4);
+	Serial.print(", ");
+	Serial.println(gps.longitudeDegrees, 4);
 }
 
 void fonaLoop() {
