@@ -28,19 +28,13 @@ int main() {
 	Serial.begin(115200);
 
 	// Peripheral initializations. 
-	setupFona();
+	initializeFona(&fonaEntity);
 
 	// Looping calls. 
 	while (1) {
 		fonaLoop();
 		Serial.flush();
 	}
-}
-
-void setupFona() {
-	Serial.println("Initializing FONA.");
-	Serial.flush();
-	initializeFona(&fonaEntity);
 }
 
 void fonaLoop() {
