@@ -21,4 +21,6 @@ C:\Users\Chris\AppData\Local\Temp\VMBuilds\MistMakersDemo\uno\Debug\main.cpp.o: 
  C:\Users\Chris\Documents\Arduino\libraries\Adafruit_FONA-master/includes/FONAConfig.h \
  C:\Users\Chris\Documents\Arduino\libraries\Adafruit_FONA-master/includes/platform/FONAPlatform.h \
  C:\Users\Chris\Documents\Arduino\libraries\Adafruit_FONA-master/includes/platform/../FONAConfig.h \
- C:\Users\Chris\Documents\Arduino\libraries\Adafruit_FONA-master/includes/platform/FONAPlatStd.h
+ C:\Users\Chris\Documents\Arduino\libraries\Adafruit_FONA-master/includes/platform/FONAPlatStd.h \
+ C:\Users\Chris\AppData\Local\Temp\VMBuilds\MistMakersDemo\uno\Debug\Mistmakers_Gps.h \
+ C:\Users\Chris\Documents\Arduino\libraries\Adafruit_GPS-master/Adafruit_GPS.h

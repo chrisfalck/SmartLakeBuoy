@@ -4,11 +4,8 @@
 
 int sendMessageToNumber(Adafruit_FONA* fona, SMSMessage* messageInfo) {
 
-	char formattedMsg[160] = "D mistmakers2 ";
-	strcat(formattedMsg, *(messageInfo->message));
-
 	// Attempt to send a text message.
-	if (!fona->sendSMS("40404", formattedMsg)) {
+	if (!fona->sendSMS(*(messageInfo->number), *(messageInfo->message))) {
 		fona->sendSMS("13528577310", "Couldnt send message to intended recipient.");
 		return 0;
 	}

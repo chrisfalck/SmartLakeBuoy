@@ -3,12 +3,19 @@
 #include <Arduino.h>
 #include "main.h"
 #include "Mistmakers_Fona.h"
+#include "Mistmakers_Gps.h"
 
 #define newline Serial.println()
 
-uint8_t FONA_RX = 5; 
-uint8_t FONA_TX = 6;
-uint8_t FONA_RST = 4; 
+#define FONA_RX 5
+#define FONA_TX 6
+#define FONA_RST 4
+
+#define GPS_RX 7
+#define GPS_TX 8
+
+SoftwareSerial* gpsSS = new SoftwareSerial(GPS_TX, GPS_RX);
+Adafruit_GPS gps(gpsSS);
 
 SoftwareSerial* fonaSS = new SoftwareSerial(FONA_TX, FONA_RX);
 Adafruit_FONA* fona = new Adafruit_FONA(FONA_RST);
