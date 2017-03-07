@@ -5,14 +5,23 @@
 #include "Adafruit_FONA.h"
 #include "Adafruit_GPS.h"
 
+// Length initialization for SMSMessage structs.
+#define MESSAGE_LENGTH 64
+
+// Must be longer than 12.
+#define NUMBER_LENGTH 16
+
+// How many messages to clean up after receiving a message (needs improvement).
+#define NUM_SMS_TO_DELETE 20
+
 // Declare typedefs so we dont' have to keep saying struct. 
 typedef struct FonaEntity FonaEntity;
 typedef struct SMSMessage SMSMessage;
 
 // Standard message struct.
 struct SMSMessage {
-	char* message[140];
-	char* number[32];
+	char* message[MESSAGE_LENGTH];
+	char* number[NUMBER_LENGTH];
 };
 
 // Fona struct holding the fona instance and fona serial.

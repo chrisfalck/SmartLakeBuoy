@@ -54,13 +54,17 @@ int main() {
 }
 
 void fonaLoop() {
-	char message[64] = "Empty";
-	char number[32] = "Empty";
 
+	// Prepare space for a message to be received.
+	char message[MESSAGE_LENGTH] = "Empty";
+	char number[NUMBER_LENGTH] = "Empty";
 	SMSMessage messageReceived = {
 		message,
 		number	
 	};
+
+	// See if we have any new messages stored in the phona. 
+	// If we don't, messageReceived.message will be "Empty".
 	checkForMessage(&messageReceived, fonaEntity.fona);
 
 	if (strcmp(*(messageReceived.message), "Empty") != 0) {
@@ -71,7 +75,9 @@ void fonaLoop() {
 			newline;
 		}
 		else {
+			newline;
 			Serial.println(F("Reply sent successfully."));
+			newline;
 		}
 	}
 }

@@ -1,3 +1,1 @@
 void fonaLoop();
-
-void gpsLoop();

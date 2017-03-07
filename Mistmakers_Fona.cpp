@@ -5,18 +5,17 @@
 
 int sendMessageToNumber(FonaEntity* fonaEntity, SMSMessage* messageInfo, Adafruit_GPS* gps) {
 
-	char* location = getLocation(gps);
-
-	delay(5000);
+	char* location;
+	while (strstr(location, "lat:") == NULL) {
+		location = getLocation(gps);
+	}
 
 	initializeFona(fonaEntity);
 
 	// Attempt to send a text message.
 	if (!fonaEntity->fona->sendSMS(*(messageInfo->number), location)) {
-		fonaEntity->fona->sendSMS("13528577310", "Couldnt send message to intended recipient.");
 		return 0;
-	}
-	else {
+	} else {
 		return 1;
 	}
 }
@@ -32,7 +31,7 @@ void initializeFona(FonaEntity* fonaEntity) {
 
 	newline;
 	Serial.println("FONA Ready");
-	newline; 
+	newline;
 }
 
 void checkForMessage(SMSMessage* message, Adafruit_FONA* fona) {
@@ -75,35 +74,35 @@ void checkForMessage(SMSMessage* message, Adafruit_FONA* fona) {
 		}
 
 		// Declare space to hold the number we received a message from.
-		char number[32];
+		char number[NUMBER_LENGTH];
 		if (receiveSuccess) {
-			for (int i = 0; i < 32; ++i) { number[i] = callerIDbuffer[i]; }
+			for (int i = 0; i < NUMBER_LENGTH; ++i) { number[i] = callerIDbuffer[i]; }
 		}
 		else {
 			char defaultNumber[12] = "13528577310";
 			for (int i = 0; i < 12; ++i) { number[i] = defaultNumber[i]; }
-			for (int i = 12; i < 32; ++i) { number[i] = '\0'; }
+			for (int i = 12; i < NUMBER_LENGTH; ++i) { number[i] = '\0'; }
 		}
 
-		newline; 
+		newline;
 		Serial.println("Received message from: ");
 		Serial.println(number);
 		newline;
 
 		newline;
 		Serial.println("Message received from sender:");
-		char userMessage[140];
+		char userMessage[MESSAGE_LENGTH];
 		uint16_t userMessageLength;
-		fona->readSMS(slot, userMessage, 140, &userMessageLength);
+		fona->readSMS(slot, userMessage, MESSAGE_LENGTH, &userMessageLength);
 		newline;
 
 		// Write the user message and number into the locations pointed to
-		// on the message we were passed.
+		// on the message struct we were passed.
 		*(message->message) = userMessage;
 		*(message->number) = number;
 
 		// Clean up.
-		for (int i = 0; i < 8; ++i) {
+		for (int i = 0; i < NUM_SMS_TO_DELETE; ++i) {
 			fona->deleteSMS(i);
 		}
 
