@@ -20,4 +20,4 @@ BSD license, all text above must be included in any redistribution
 // Original code modified by the Mist Center at the University of Florida. 
 
 #include <SoftwareSerial.h>
-//#include <Adafruit_GPS.h>
+#include <Adafruit_GPS.h>
