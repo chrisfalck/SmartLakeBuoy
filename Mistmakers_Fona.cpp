@@ -74,14 +74,14 @@ void checkForMessage(SMSMessage* message, Adafruit_FONA* fona) {
 		}
 
 		// Declare space to hold the number we received a message from.
-		char number[NUMBER_LENGTH];
+		char number[NUMBER_MAX_LENGTH];
 		if (receiveSuccess) {
-			for (int i = 0; i < NUMBER_LENGTH; ++i) { number[i] = callerIDbuffer[i]; }
+			for (int i = 0; i < NUMBER_MAX_LENGTH; ++i) { number[i] = callerIDbuffer[i]; }
 		}
 		else {
 			char defaultNumber[12] = "13528577310";
 			for (int i = 0; i < 12; ++i) { number[i] = defaultNumber[i]; }
-			for (int i = 12; i < NUMBER_LENGTH; ++i) { number[i] = '\0'; }
+			for (int i = 12; i < NUMBER_MAX_LENGTH; ++i) { number[i] = '\0'; }
 		}
 
 		newline;
@@ -91,9 +91,9 @@ void checkForMessage(SMSMessage* message, Adafruit_FONA* fona) {
 
 		newline;
 		Serial.println("Message received from sender:");
-		char userMessage[MESSAGE_LENGTH];
+		char userMessage[MESSAGE_MAX_LENGTH];
 		uint16_t userMessageLength;
-		fona->readSMS(slot, userMessage, MESSAGE_LENGTH, &userMessageLength);
+		fona->readSMS(slot, userMessage, MESSAGE_MAX_LENGTH, &userMessageLength);
 		newline;
 
 		// Write the user message and number into the locations pointed to

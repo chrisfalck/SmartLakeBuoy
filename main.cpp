@@ -56,8 +56,8 @@ int main() {
 void fonaLoop() {
 
 	// Prepare space for a message to be received.
-	char message[MESSAGE_LENGTH] = "Empty";
-	char number[NUMBER_LENGTH] = "Empty";
+	char message[MESSAGE_MAX_LENGTH] = "Empty";
+	char number[NUMBER_MAX_LENGTH] = "Empty";
 	SMSMessage messageReceived = {
 		message,
 		number	
