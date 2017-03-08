@@ -73,10 +73,9 @@ void fonaLoop() {
 			newline;
 			Serial.println(F("Reply sent successfully."));
 			newline;
-		}
-		else {
+		} else {
 			newline;
-			Serial.println(F("Reply sent successfully."));
+			Serial.println(F("Reply not sent successfully."));
 			newline;
 		}
 	}
